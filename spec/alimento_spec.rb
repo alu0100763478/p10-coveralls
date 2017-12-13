@@ -344,6 +344,27 @@ end
    end 		
 end 
 
+context "# DDL" do
+  before :all do
+        
+    @lentejas_arroz = Plato.new("Lentejas con arroz, salsa de tomate, huevo y plátano a la plancha") do
+      vegetal "Tomate",    :porcion => "2 piezas pequeñas"
+      fruta "Plátano",    :gramos => 20
+      grano "Arroz",    :porcion => "1 taza"
+      proteina "Lentejas",    :porcion => "1/2 cucharón"
+      proteina "Huevo",    :porcion => "1 pieza"
+#      aceite "Aceite de oliva",    :porcion => "1/2 cucharada"
+end  
+  end  
+   describe "Platos" do
+        it "Comprobar que se ingresa correctamente los tipos de alimentos" do
+          expect(@lentejas_arroz.to_s).to eq("Lentejas con arroz, salsa de tomate, huevo y plátano a la plancha\n=================================================================\nComposición nutricional: Glúcidos|Lípídos|Proteínas|Valor Energético\nTomate:\s3.5|0.2|1.0|396.0\nPlátano:\s21.4|0.2|1.2|1844.0\nArroz:\s77.7|0.6|6.8|10302.0\nLentejas:\s52.0|1.4|23.5|15730.0\nHuevo:\s0.0|10.5|12.1|8574.0\nValor energético total: 8574.0\n")
+        end
+    
+    end  
+end 
+
+
 end #context AGrupos
 
 
